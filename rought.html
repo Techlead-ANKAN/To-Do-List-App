@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+        
+        #overlayContent {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        
+        #closeButton {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+    
+    <title>Overlay Example</title>
+</head>
+<body>
+    <button id="showOverlayButton">Show Overlay</button>
+    
+    <div id="overlay">
+        <div id="overlayContent">
+            <h2>Overlay Content</h2>
+            <p>This is the content of the overlay.</p>
+            <span id="closeButton">&times;</span>
+        </div>
+    </div>
+    
+    <script>
+        const showOverlayButton = document.getElementById("showOverlayButton");
+        const overlay = document.getElementById("overlay");
+        const closeButton = document.getElementById("closeButton");
+        
+        showOverlayButton.addEventListener("click", () => {
+            overlay.style.display = "block";
+        });
+        
+        closeButton.addEventListener("click", () => {
+            overlay.style.display = "none";
+        });
+        
+        overlay.addEventListener("click", (event) => {
+            if (event.target === overlay) {
+                overlay.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
